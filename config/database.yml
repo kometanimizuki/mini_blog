@@ -59,7 +59,7 @@ production:
   encoding: unicode
   pool: 5
 
-  development:
+development:
   <<: *default
   database: App_development
   host: localhost
