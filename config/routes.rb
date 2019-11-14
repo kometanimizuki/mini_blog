@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :userrails
   devise_for :users
-  get 'tweets' => 'tweets#index'
+  root 'tweets#index'
   get 'tweets/new' => 'tweets#new'
   post 'tweets' => 'tweets#create'
   delete  'tweets/:id'  => 'tweets#destroy'
