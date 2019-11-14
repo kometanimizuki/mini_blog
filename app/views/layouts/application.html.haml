@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/haml; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    / Import Google Icon Font
+    %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
+    / Import materialize.css
+    %link{:href => "stylesheet/materialize.scss", :media => "screen,projection", :rel => "stylesheet", :type => "text/css"}/
+    / Let browser know website is optimized for mobile
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title App
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header
+      %nav
+        .nav-wrapper
+          %a.brand-logo.center{:href => "/tweets"} Pic BLOG
+          - if user_signed_in?
+            %ul#nav-mobile.left.hide-on-med-and-down
+              = link_to "Log out", destroy_user_session_path, method: :delete
+              %a.post{:href => "/tweets/new"} POST
+          - else
+            %ul#nav-mobile.left.hide-on-med-and-down
+              = link_to "Log in", new_user_session_path, class: 'post'
+              = link_to "Sigh up", new_user_registration_path, class: 'post'
+
+    = yield
+    %script{:src => "js/materialize.min.js", :type => "text/javascript"}

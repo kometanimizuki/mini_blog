@@ -1,0 +1,14 @@
+
+%body
+  .col.s12.m7
+    - @tweets.each do |tweet|
+      .card.horizontal
+        .card-image
+          %img{:src => "#{tweet.image}"}/
+        .card-stacked
+          .card-content
+            = simple_format(tweet.text)
+            %span.name= tweet.name
+
+  = paginate(@tweets)
+  
