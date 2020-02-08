@@ -58,6 +58,12 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: mini_blog
-  password: password
+
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: App
+  pool: 5
+  username: root
+  password:
   host: localhost
